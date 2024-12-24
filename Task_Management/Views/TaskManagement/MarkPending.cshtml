@@ -1,0 +1,28 @@
+﻿@model Task_Management.Models.TaskManagement
+
+@{
+    ViewData["Title"] = "Mark Task as Pending";
+}
+
+<h2>Mark Task as Pending</h2>
+
+<div>
+    <h4>Are you sure you want to mark this task as pending?</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Task Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Due Date</dt>
+        <dd class="col-sm-10">@Model.DueDate.ToShortDateString()</dd>
+    </dl>
+
+    <form asp-action="MarkPendingConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-warning">Mark as Pending</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

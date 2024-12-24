@@ -1,0 +1,28 @@
+﻿@model Task_Management.Models.TaskManagement
+
+@{
+    ViewData["Title"] = "Mark Task as Complete";
+}
+
+<h2>Mark Task as Complete</h2>
+
+<div>
+    <h4>Are you sure you want to mark this task as complete?</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Task Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Due Date</dt>
+        <dd class="col-sm-10">@Model.DueDate.ToShortDateString()</dd>
+    </dl>
+
+    <form asp-action="MarkCompleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-success">Mark as Complete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
